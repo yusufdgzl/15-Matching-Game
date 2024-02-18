@@ -1,0 +1,86 @@
+[
+    {
+      "id": 1,
+      "name": "apple",
+      "img": "https://www.shutterstock.com/image-photo/red-apple-isolated-on-white-600nw-1727544364.jpg",
+      "isVisible": false,
+      "amount":1
+    },
+    {
+      "id": 2,
+      "name": "apple",
+      "img": "https://www.shutterstock.com/image-photo/red-apple-isolated-on-white-600nw-1727544364.jpg",
+      "isVisible": false,
+      "amount":1
+    },
+    {
+      "id": 3,
+      "name": "strawberry",
+      "img": "https://t3.ftcdn.net/jpg/02/76/47/04/360_F_276470457_tE88zb5z0WyyAdmoglEpD4HeenToat6J.jpg",
+      "isVisible": false,
+      "amount":1
+    },
+    {
+      "id": 4,
+      "name": "strawberry",
+      "img": "https://t3.ftcdn.net/jpg/02/76/47/04/360_F_276470457_tE88zb5z0WyyAdmoglEpD4HeenToat6J.jpg",
+      "isVisible": false,
+      "amount":1
+    },
+    {
+      "id": 5,
+      "name": "plum",
+      "img": "https://static.ticimax.cloud/cdn-cgi/image/width=-,quality=85/11919/uploads/urunresimleri/buyuk/sari-erik-kg-634c.png",
+      "isVisible": false,
+      "amount":1
+    },
+    {
+      "id": 6,
+      "name": "plum",
+      "img": "https://static.ticimax.cloud/cdn-cgi/image/width=-,quality=85/11919/uploads/urunresimleri/buyuk/sari-erik-kg-634c.png",
+      "isVisible": false,
+      "amount":1
+    },
+    {
+      "id": 7,
+      "name": "banana",
+      "img": "https://www.shutterstock.com/image-photo/bunch-bananas-isolated-on-white-600nw-1722111529.jpg",
+      "isVisible": false,
+      "amount":1
+    },
+    {
+      "id": 8,
+      "name": "banana",
+      "img": "https://www.shutterstock.com/image-photo/bunch-bananas-isolated-on-white-600nw-1722111529.jpg",
+      "isVisible": false,
+      "amount":1
+    },
+    {
+      "id": 9,
+      "name": "kiwi",
+      "img": "https://cdn.britannica.com/45/126445-050-4C0FA9F6/Kiwi-fruit.jpg",
+      "isVisible": false,
+      "amount":1
+    },
+    {
+      "id": 10,
+      "name": "kiwi",
+      "img": "https://cdn.britannica.com/45/126445-050-4C0FA9F6/Kiwi-fruit.jpg",
+      "isVisible": false,
+      "amount":1
+    },
+    {
+      "id": 11,
+      "name": "orange",
+      "img": "https://media.istockphoto.com/id/185284489/tr/foto%C4%9Fraf/orange.jpg?s=612x612&w=0&k=20&c=nPHn2c9Boi2WPIu6wk6tlIiFY3IT7xymRuAvKiVfYus=",
+      "isVisible": false,
+      "amount":1
+    },
+    {
+      "id": 12,
+      "name": "orange",
+      "img": "https://media.istockphoto.com/id/185284489/tr/foto%C4%9Fraf/orange.jpg?s=612x612&w=0&k=20&c=nPHn2c9Boi2WPIu6wk6tlIiFY3IT7xymRuAvKiVfYus=",
+      "isVisible": false,
+      "amount":1
+    }
+  ]
