@@ -73,23 +73,25 @@ export default function Items() {
       </div>
 
       <div className="flex flex-col justify-between items-center w-[30%] my-20">
-        <div className="text-2xl bg-amber-500 px-6 py-2 text-center text-white rounded-full">
-          <h2>Total Point : {point}</h2>
+        <div className="w-3/5 border-2 border-dashed border-[#a62b9460] text-2xl px-6 py-2 text-center text-white rounded-full">
+          <h2 className="flex justify-around items-center  ">
+            Total point :<p className="bg-[#a62b9460] flex justify-center items-center w-10 h-10 rounded-full">{point}</p>
+          </h2>
         </div>
 
-        <div className="flex w-full justify-around ">
+        <div className="flex w-full justify-around  ">
           <button
             onClick={startHandler}
-            className=" bg-sky-500 text-white p-4 rounded-lg text-xl hover:bg-sky-600"
+            className=" border-sky-500 border-2 b transition-all text-sky-500 p-4 rounded-lg text-xl font-semibold hover:bg-sky-500 hover:text-white"
           >
-            Start to Game
+            Start To Game
           </button>
 
           <button
             onClick={closeHandler}
-            className=" bg-red-500 text-white p-4 rounded-lg text-xl hover:bg-red-600"
+            className=" border-red-500 border-2 transition-all text-red-500 p-4 rounded-lg text-xl font-semibold hover:bg-red-500 hover:text-white"
           >
-            Close to Game
+            Close To Game
           </button>
         </div>
       </div>
