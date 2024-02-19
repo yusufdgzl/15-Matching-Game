@@ -73,9 +73,12 @@ export default function Items() {
       </div>
 
       <div className="flex flex-col justify-between items-center w-[30%] my-20">
-        <div className="w-3/5 border-2 border-dashed border-[#a62b9460] text-2xl px-6 py-2 text-center text-white rounded-full">
+        <div className="w-3/5 border-2 border-dashed border-[#a62b9460] text-2xl px-6 py-2 text-center text-white rounded-full ">
           <h2 className="flex justify-around items-center  ">
-            Total point :<p className="bg-[#a62b9460] flex justify-center items-center w-10 h-10 rounded-full">{point}</p>
+            Total point :
+            <p className="bg-[#a62b9460] flex justify-center items-center w-10 h-10 rounded-full">
+              {point}
+            </p>
           </h2>
         </div>
 

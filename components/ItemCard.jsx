@@ -8,15 +8,15 @@ export default function ItemCard(props) {
 
   useEffect(() => {
     if (matched.includes(props.name)) {
-      setCardShadow("shadow-[0_0_15px_0_#65f44f]");
-    } else if (props.isVisible) {
+      setCardShadow("shadow-[5px_5px_10px_0_#65f44f]");
+    } else if (isVisible) {
       setCardShadow("shadow-[0_0_10px_0_yellow]");
     } else {
       setCardShadow("");
     }
   }, [isVisible, matched]);
 
-  const cardOpacity = matched.includes(props.name) ? "opacity-70" : "";
+  const cardOpacity = matched.includes(props.name) ? "opacity-60" : "";
 
   const questionMarkPicture =
     "https://img.lovepik.com/free-png/20220109/lovepik-gray-question-mark-png-image_401351792_wh860.png";
