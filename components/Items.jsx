@@ -19,32 +19,35 @@ export default function Items() {
     setIsVisibleProducts(products.filter((item) => item.isVisible === true));
   }, [products]);
 
-  const isVisiblesName = isVisibleProducts.map((item) => item.name);
-
   function handlerShowSelected(id) {
     const selectedProduct = products.find((product) => product.id === id);
-    selectedProduct.isVisible = true;
+    
+    if (!selectedProduct.isVisible) {
+      selectedProduct.isVisible = true;
 
-    setIsVisibleProducts(products.filter((item) => item.isVisible === true));
+      setIsVisibleProducts(products.filter((item) => item.isVisible === true));
 
-    if (isVisiblesName.includes(selectedProduct.name)) {
-      setMatchedProducts((prev) => [...prev, selectedProduct.name]);
-      setPoint((prev) => prev + 10);
+      const isVisiblesName = isVisibleProducts.map((item) => item.name);
+
+      if (isVisiblesName.includes(selectedProduct.name)) {
+        setMatchedProducts((prev) => [...prev, selectedProduct.name]);
+        setPoint((prev) => prev + 10);
+      }
+
+      const updatedMatchedProducts = [...matchedProducts, selectedProduct.name];
+
+      console.log(updatedMatchedProducts);
+
+      setTimeout(() => {
+        setProducts(
+          products.map((item) =>
+            !updatedMatchedProducts.includes(item.name)
+              ? { ...item, isVisible: false }
+              : item
+          )
+        );
+      }, 100);
     }
-
-    const updatedMatchedProducts = [...matchedProducts, selectedProduct.name];
-
-    console.log(updatedMatchedProducts);
-
-    setTimeout(() => {
-      setProducts(
-        products.map((item) =>
-          !updatedMatchedProducts.includes(item.name)
-            ? { ...item, isVisible: false }
-            : item
-        )
-      );
-    }, 100);
   }
 
   function closeHandler() {
@@ -66,7 +69,7 @@ export default function Items() {
           />
         ))}
       </div>
-      
+
       <div className="flex flex-col justify-between items-center w-[30%] my-20">
         <div className="text-2xl bg-amber-500 px-6 py-2 text-center text-white rounded-full">
           <h2>Total Point : {point}</h2>

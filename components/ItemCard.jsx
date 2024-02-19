@@ -19,15 +19,15 @@ export default function ItemCard(props) {
   const cardOpacity = matched.includes(props.name) ? "opacity-70" : "";
 
 
-  const whitePicture =
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Solid_white.svg/2048px-Solid_white.svg.png";
-  const img = props.isVisible ? props.img : whitePicture;
+  const questionMarkPicture =
+    "https://img.lovepik.com/free-png/20220109/lovepik-gray-question-mark-png-image_401351792_wh860.png";
+  const img = props.isVisible ? props.img : questionMarkPicture;
 
   return (
     <div className="flex m-auto bg-black rounded-2xl ">
-      <button onClick={props.onHandlerShowSelected.bind(null, props.id)}>
+      <button  onClick={ props.onHandlerShowSelected.bind(null, props.id)} >
         <img
-          className={`${cardOpacity} w-48 h-40 opac rounded-2xl ${cardShadow} `}
+          className={`${cardOpacity} w-48 h-40 transition-all duration-500 rounded-2xl ${cardShadow} `}
           src={img}
           alt="img"
         />
