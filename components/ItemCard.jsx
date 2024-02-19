@@ -7,6 +7,7 @@ export default function ItemCard(props) {
   const matched = props.matched;
   const isVisible = props.isVisible;
   const point = props.point;
+  const cardOpacity = matched.includes(props.name) ? "opacity-60" : "";
 
   useEffect(() => {
     if (matched.includes(props.name)) {
@@ -16,9 +17,10 @@ export default function ItemCard(props) {
     } else {
       setCardShadow("");
     }
+
   }, [isVisible, matched]);
 
-  const cardOpacity = matched.includes(props.name) ? "opacity-60" : "";
+  
 
   const questionMarkPicture =
     "https://img.lovepik.com/free-png/20220109/lovepik-gray-question-mark-png-image_401351792_wh860.png";

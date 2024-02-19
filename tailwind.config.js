@@ -14,7 +14,7 @@ module.exports = {
       animation: {
         'spin-slow': 'spin 1s linear',
         'wiggle': 'wiggle 1s ease-in-out infinite ',
-        
+        'ping-one': 'ping 1s linear',
       },
       keyframes: {
         wiggle: {
