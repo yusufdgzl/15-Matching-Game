@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 
 export default function ItemCard(props) {
+
   const [cardShadow, setCardShadow] = useState("");
 
   const matched = props.matched;
   const isVisible = props.isVisible;
+  const point = props.point;
 
   useEffect(() => {
     if (matched.includes(props.name)) {
@@ -23,7 +25,7 @@ export default function ItemCard(props) {
   const img = props.isVisible ? props.img : questionMarkPicture;
 
   return (
-    <div className="flex m-auto bg-black rounded-2xl  ">
+    <div className={`flex m-auto bg-black rounded-2xl ${point === 60 ? 'animate-wiggle': ''} `}>
       <button onClick={props.onHandlerShowSelected.bind(null, props.id)}>
         <img
           className={` w-40 h-36 transition-all duration-500 rounded-2xl ${cardOpacity}  ${cardShadow}  ${isVisible && 'scale-105'} `}

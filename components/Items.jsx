@@ -70,6 +70,7 @@ export default function Items() {
             {...item}
             onHandlerShowSelected={handlerShowSelected}
             matched={matchedProducts}
+            point={point}
           />
         ))}
       </div>
