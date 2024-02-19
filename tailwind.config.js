@@ -12,7 +12,7 @@ module.exports = {
         'fruits': "url(https://images6.alphacoders.com/368/368872.jpg)",
       },
       animation: {
-        'spin-slow': 'spin 1s linear',
+        'spin-fast-one': 'spin 0.5s  linear',
         'wiggle': 'wiggle 1s ease-in-out infinite ',
         'ping-one': 'ping 1s linear',
       },
