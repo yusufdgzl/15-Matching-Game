@@ -62,6 +62,7 @@ export default function Items() {
             key={index}
             {...item}
             onHandlerShowSelected={handlerShowSelected}
+            matched={matchedProducts}
           />
         ))}
       </div>
