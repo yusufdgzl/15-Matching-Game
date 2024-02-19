@@ -12,6 +12,8 @@ export default function Items() {
     const response = await fetch("/item-data.json");
     const data = await response.json();
 
+    setMatchedProducts([]);
+
     setProducts(Random(data));
   }
 
@@ -21,7 +23,7 @@ export default function Items() {
 
   function handlerShowSelected(id) {
     const selectedProduct = products.find((product) => product.id === id);
-    
+
     if (!selectedProduct.isVisible) {
       selectedProduct.isVisible = true;
 
