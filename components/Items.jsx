@@ -15,6 +15,8 @@ export default function Items() {
     setMatchedProducts([]);
 
     setProducts(Random(data));
+
+    setPoint(0);
   }
 
   useEffect(() => {
