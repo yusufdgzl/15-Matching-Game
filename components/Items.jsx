@@ -17,8 +17,43 @@ export default function Items() {
 
   const [time,setTime]= useState(10);
   const [loseGame,setLoseGame] = useState(false);
+  const [startTime,setStartTime] = useState(false)
 
-  console.log(time)
+
+  useEffect(()=>{
+
+    if(startTime){
+
+      const timer = setInterval(() => {
+
+        setTime((prev)=> {
+  
+          if(prev === 0){
+  
+            clearInterval(timer);
+            setLoseGame(true);
+            setTime(10);
+  
+            return prev;
+          } 
+
+          return prev - 1;
+  
+        });
+  
+      }, 1000);
+  
+      return () => clearInterval(timer)
+    } 
+
+  },[startTime])
+
+
+  useEffect(()=>{
+      if(point === 60) {
+          setStartTime(false);
+      }
+  },[point])
 
 
   async function startHandler() {
@@ -33,27 +68,12 @@ export default function Items() {
     setShowCloseButton(true);
 
 
-    const timer = setInterval(() => {
+    setStartTime(true);
+    setLoseGame(false);
+  
 
-      setTime((prev)=> {
-
-        if(prev === 0){
-
-          clearInterval(timer);
-          setLoseGame(true);
-          setTime(10);
-
-          return prev;
-        } 
-        return prev - 1
-      });
-
-    }, 1000);
-
-    return () => clearInterval(timer);
   }
 
-  console.log(time)
   
 
  
@@ -125,6 +145,8 @@ export default function Items() {
         ))}
       </div>
 
+          <h1 className="text-3xl text-white">{time}</h1>
+
       <div className="flex flex-col justify-between items-center w-[30%] my-20">
         {showCloseButton && (
           <div className="w-3/5 border-2 border-dashed border-[#a62b9460] text-2xl px-6 py-2 text-center text-white rounded-full ">
@@ -139,6 +161,16 @@ export default function Items() {
             </h2>
           </div>
         )}
+
+
+        {loseGame && 
+        <div className="flex flex-col justify-center items-center ">
+            <h2 className="text-3xl py-2 font-mono text-transparent bg-clip-text  bg-gradient-to-r from-red-600 via-red-300 to-red-600 animate-bounce ">
+              Time is up!!!
+            </h2>
+            <AgainButton onStartHandler={startHandler} />
+          </div>}
+
 
         {point === 60 && (
           <div className="flex flex-col justify-center items-center ">
