@@ -30,9 +30,9 @@ export default function Items() {
   
           if(prev === 0){
   
-            clearInterval(timer);
+            
             setLoseGame(true);
-            setTime(10);
+            
   
             return prev;
           } 
@@ -56,7 +56,9 @@ export default function Items() {
   },[point])
 
 
-  async function startHandler() {
+  async function startHandler(e) {
+
+    e.preventDefault();
 
     const response = await fetch("/item-data.json");
     const data = await response.json();
@@ -67,11 +69,10 @@ export default function Items() {
 
     setShowCloseButton(true);
 
-
-    setStartTime(true);
     setLoseGame(false);
+    setTime(10);
+    setStartTime(true);
   
-
   }
 
   
@@ -145,7 +146,7 @@ export default function Items() {
         ))}
       </div>
 
-          <h1 className="text-3xl text-white">{time}</h1>
+          
 
       <div className="flex flex-col justify-between items-center w-[30%] my-20">
         {showCloseButton && (
@@ -162,6 +163,7 @@ export default function Items() {
           </div>
         )}
 
+           <h1 className="text-3xl text-white">{time}</h1>
 
         {loseGame && 
         <div className="flex flex-col justify-center items-center ">
