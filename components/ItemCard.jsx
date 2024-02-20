@@ -8,6 +8,7 @@ export default function ItemCard(props) {
   const isVisible = props.isVisible;
   const point = props.point;
   const name = props.name;
+ 
 
   const cardOpacity = matched.includes(name) ? "opacity-60" : "";
 
@@ -30,13 +31,13 @@ export default function ItemCard(props) {
   return (
     <div
       className={`flex m-auto bg-black rounded-2xl 
-      ${point === 60 ? "animate-wiggle" : "animate-spin-fast-one"}`}
+      ${point === 60 && "animate-wiggle"} ${!isVisible || isVisible.length === 0 ? "animate-spin-fast-one" : ''} `}
     >
       <button onClick={props.onHandlerShowSelected.bind(null, props.id)}>
 
         <img
           className={` w-40 h-36 transition-all duration-500 rounded-2xl 
-          ${ point !== 60 && cardOpacity}  ${cardShadow}  ${isVisible && "scale-105"}`}
+          ${ point !== 60 && cardOpacity}  ${cardShadow}  ${isVisible &&  "scale-105"}`}
 
           src={img}
           alt="img"
