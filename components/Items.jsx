@@ -124,29 +124,32 @@ export default function Items() {
       </div>
 
       <div className="flex flex-col justify-between items-center w-[30%] my-20">
-        {showCloseButton && (
-          <div className="w-3/5 border-2 border-dashed border-[#a62b9460] text-2xl px-6 py-2 text-center text-white rounded-full ">
-            <h2 className="flex justify-around items-center relative  ">
-              Total point :
-              <p className="bg-[#a62b9460] relative flex justify-center items-center w-10 h-10 rounded-full">
-                {point}
-              </p>
-              {animatePing && (
-                <span className="bg-yellow-300 border-2 w-6 h-6 absolute right-2 rounded-full animate-ping"></span>
-              )}
-            </h2>
-          </div>
-        )}
+        <div className="flex flex-col w-full space-y-5 justify-around items-center">
+          {showCloseButton && (
+            <div className="w-3/5 h-4 bg-white  rounded-full overflow-hidden">
+              <div
+                className={`h-full bg-gradient-to-l to-red-500 from-green-500 transition-all ease-out `}
+                style={{ width: `${time}%` }}
+              />
+            </div>
+          )}
 
-        
-        <div className="w-3/5 h-4 bg-white  rounded-full overflow-hidden">
-          <div
-            className={`h-full  bg-gradient-to-r to-green-500 via-yellow-500 from-red-500 transition-width ease-in-out `}
-            style={{ width: `${time}%` }}
-          />
+          {showCloseButton && (
+            <div className="w-3/5 border-2 border-dashed border-[#a62b9460] text-2xl px-6 py-2 text-center text-white rounded-full ">
+              <h2 className="flex justify-around items-center relative  ">
+                Total point :
+                <p className="bg-[#a62b9460] relative flex justify-center items-center w-10 h-10 rounded-full">
+                  {point}
+                </p>
+                {animatePing && (
+                  <span className="bg-yellow-300 border-2 w-6 h-6 absolute right-2 rounded-full animate-ping"></span>
+                )}
+              </h2>
+            </div>
+          )}
         </div>
 
-        {loseGame && (
+        {loseGame && showCloseButton && (
           <div className="flex flex-col justify-center items-center ">
             <h2 className="text-3xl py-2 font-mono text-transparent bg-clip-text  bg-gradient-to-r from-red-600 via-red-300 to-red-600 animate-bounce ">
               Time is up!!!
