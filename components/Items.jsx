@@ -30,7 +30,7 @@ export default function Items() {
 
           return prev - 1;
         });
-      }, 100);
+      }, 200);
 
       return () => clearInterval(timer);
     }
@@ -76,6 +76,8 @@ export default function Items() {
       if (isVisiblesName.includes(selectedProduct.name)) {
         setMatchedProducts((prev) => [...prev, selectedProduct.name]);
         setPoint((prev) => prev + 10);
+        
+        setTime((prev)=> prev + 10);
 
         setAnimatePing(true);
 
@@ -161,7 +163,7 @@ export default function Items() {
         {point === 60 && (
           <div className="flex flex-col justify-center items-center ">
             <h2 className="text-3xl py-2 font-mono text-transparent bg-clip-text  bg-gradient-to-r from-indigo-600 via-red-300 to-purple-400 animate-bounce ">
-              Congratulations
+              Congratulations!
             </h2>
             <AgainButton onStartHandler={startHandler} />
           </div>
