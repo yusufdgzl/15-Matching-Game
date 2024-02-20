@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
 import Random from "./helper/Random";
 import AgainIcon from "@/lib/Icons/AgainIcon";
+import StartButton from "@/lib/Buttons/StartButton";
+import CloseButton from "@/lib/Buttons/CloseButton";
+import AgainButton from "@/lib/Buttons/AgainButton";
 
 export default function Items() {
   const [products, setProducts] = useState([]);
@@ -102,33 +105,20 @@ export default function Items() {
           </div>
         )}
 
-        {point === 60 && <div className="flex flex-col justify-center items-center ">
-          <h2 className="text-3xl py-2 text-transparent bg-clip-text  bg-gradient-to-r from-indigo-600 via-red-300 to-purple-400 animate-bounce ">
-            Congratulations...
-          </h2>
-          <button onClick={startHandler} className="flex w-4/5 justify-around items-center  border-orange-500 border-2 transition-all text-orange-500 px-4 py-2 rounded-lg text-xl font-semibold hover:bg-orange-500 hover:text-white">
-            Play Again
-            <span className=" border-orange-500 border animate-spin rounded-full">
-              <AgainIcon />
-            </span>
-          </button>
-        </div>}
+        {point === 60 && (
+          <div className="flex flex-col justify-center items-center ">
+            <h2 className="text-3xl py-2 font-mono text-transparent bg-clip-text  bg-gradient-to-r from-indigo-600 via-red-300 to-purple-400 animate-bounce ">
+              Congratulations
+            </h2>
+            <AgainButton onStartHandler={startHandler}/>
+          </div>
+        )}
 
         <div className="flex w-full justify-around  ">
           {showCloseButton ? (
-            <button
-              onClick={closeHandler}
-              className=" border-red-500 border-2 transition-all text-red-500 px-4 py-2 rounded-lg text-xl font-semibold hover:bg-red-500 hover:text-white"
-            >
-              Close To Game
-            </button>
+            <CloseButton onCloseHandler={closeHandler} />
           ) : (
-            <button
-              onClick={startHandler}
-              className=" border-sky-500 border-2 b transition-all text-sky-500 px-4 py-2 rounded-lg text-xl font-semibold hover:bg-sky-500 hover:text-white"
-            >
-              Start To Game
-            </button>
+            <StartButton onStartHandler={startHandler} />
           )}
         </div>
       </div>
