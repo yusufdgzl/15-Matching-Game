@@ -14,7 +14,7 @@ export default function Items() {
   const [animatePing, setAnimatePing] = useState(false);
   const [showCloseButton, setShowCloseButton] = useState(false);
 
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState(100);
   const [loseGame, setLoseGame] = useState(false);
   const [startTime, setStartTime] = useState(false);
 
@@ -30,7 +30,7 @@ export default function Items() {
 
           return prev - 1;
         });
-      }, 1000);
+      }, 100);
 
       return () => clearInterval(timer);
     }
@@ -55,19 +55,18 @@ export default function Items() {
     setShowCloseButton(true);
 
     setLoseGame(false);
-    setTime(10);
+    setTime(100);
     setStartTime(true);
   }
 
   useEffect(() => {
     setIsVisibleProducts(products.filter((item) => item.isVisible === true));
-
   }, [products]);
 
   function handlerShowSelected(id) {
     const selectedProduct = products.find((product) => product.id === id);
 
-    if (!selectedProduct.isVisible && !loseGame ) {
+    if (!selectedProduct.isVisible && !loseGame) {
       selectedProduct.isVisible = true;
 
       setIsVisibleProducts(products.filter((item) => item.isVisible === true));
@@ -139,7 +138,13 @@ export default function Items() {
           </div>
         )}
 
-        <h1 className="text-3xl text-white">{time}</h1>
+        
+        <div className="w-3/5 h-4 bg-white  rounded-full overflow-hidden">
+          <div
+            className={`h-full  bg-gradient-to-r to-green-500 via-yellow-500 from-red-500 transition-width ease-in-out `}
+            style={{ width: `${time}%` }}
+          />
+        </div>
 
         {loseGame && (
           <div className="flex flex-col justify-center items-center ">

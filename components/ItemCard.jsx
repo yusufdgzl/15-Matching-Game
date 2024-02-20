@@ -9,6 +9,7 @@ export default function ItemCard(props) {
   const point = props.point;
   const name = props.name;
  
+ 
 
   const cardOpacity = matched.includes(name) ? "opacity-60" : "";
 
@@ -31,7 +32,7 @@ export default function ItemCard(props) {
   return (
     <div
       className={`flex m-auto bg-black rounded-2xl 
-      ${point === 60 && "animate-wiggle"} ${!isVisible || isVisible.length === 0 ? "animate-spin-fast-one" : ''} `}
+      ${point === 60 && "animate-wiggle"} ${!isVisible ? "animate-spin-fast-one" : ''} `}
     >
       <button onClick={props.onHandlerShowSelected.bind(null, props.id)}>
 
