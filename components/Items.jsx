@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
-import Random from "./helper/Random";
-import AgainIcon from "@/lib/Icons/AgainIcon";
-import StartButton from "@/lib/Buttons/StartButton";
-import CloseButton from "@/lib/Buttons/CloseButton";
-import AgainButton from "@/lib/Buttons/AgainButton";
+import Random from "./Helper/Random";
+import StartButton from "@/components/Buttons/StartButton";
+import CloseButton from "@/components/Buttons/CloseButton";
+import AgainButton from "@/components/Buttons/AgainButton";
 
 export default function Items() {
+
   const [products, setProducts] = useState([]);
   const [isVisibleProducts, setIsVisibleProducts] = useState([]);
   const [matchedProducts, setMatchedProducts] = useState([]);
@@ -14,6 +14,11 @@ export default function Items() {
 
   const [animatePing, setAnimatePing] = useState(false);
   const [showCloseButton, setShowCloseButton] = useState(false);
+
+  const [time,setTime]= useState(10);
+
+  console.log(time)
+
 
   async function startHandler() {
     const response = await fetch("/item-data.json");
@@ -24,11 +29,35 @@ export default function Items() {
     setPoint(0);
 
     setShowCloseButton(true);
+
+
+    const timer = setInterval(() => {
+
+      setTime((prev)=> {
+        if(prev === 0){
+          clearInterval(timer);
+          closeHandler();
+          return prev;
+        } 
+        return prev - 1
+      });
+
+    }, 1000);
+
+    return () => clearInterval(timer);
   }
+
+  console.log(time)
+  
+
+ 
+
 
   useEffect(() => {
     setIsVisibleProducts(products.filter((item) => item.isVisible === true));
   }, [products]);
+
+
 
   function handlerShowSelected(id) {
     const selectedProduct = products.find((product) => product.id === id);
@@ -110,16 +139,19 @@ export default function Items() {
             <h2 className="text-3xl py-2 font-mono text-transparent bg-clip-text  bg-gradient-to-r from-indigo-600 via-red-300 to-purple-400 animate-bounce ">
               Congratulations
             </h2>
-            <AgainButton onStartHandler={startHandler}/>
+            <AgainButton onStartHandler={startHandler} />
           </div>
         )}
 
         <div className="flex w-full justify-around  ">
-          {showCloseButton ? (
+          {showCloseButton ? 
+            (
             <CloseButton onCloseHandler={closeHandler} />
-          ) : (
+            ) 
+            : 
+            (
             <StartButton onStartHandler={startHandler} />
-          )}
+            )}
         </div>
       </div>
     </>

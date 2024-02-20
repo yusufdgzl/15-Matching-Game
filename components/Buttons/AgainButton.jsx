@@ -1,4 +1,4 @@
-import AgainIcon from "../Icons/AgainIcon";
+import AgainIcon from "../../lib/Icons/AgainIcon";
 
 function AgainButton(props) {
   return (
