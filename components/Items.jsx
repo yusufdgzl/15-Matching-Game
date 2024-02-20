@@ -16,11 +16,13 @@ export default function Items() {
   const [showCloseButton, setShowCloseButton] = useState(false);
 
   const [time,setTime]= useState(10);
+  const [loseGame,setLoseGame] = useState(false);
 
   console.log(time)
 
 
   async function startHandler() {
+
     const response = await fetch("/item-data.json");
     const data = await response.json();
 
@@ -34,9 +36,13 @@ export default function Items() {
     const timer = setInterval(() => {
 
       setTime((prev)=> {
+
         if(prev === 0){
+
           clearInterval(timer);
-          closeHandler();
+          setLoseGame(true);
+          setTime(10);
+
           return prev;
         } 
         return prev - 1
