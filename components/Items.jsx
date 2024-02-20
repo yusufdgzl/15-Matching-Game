@@ -6,7 +6,6 @@ import CloseButton from "@/components/Buttons/CloseButton";
 import AgainButton from "@/components/Buttons/AgainButton";
 
 export default function Items() {
-
   const [products, setProducts] = useState([]);
   const [isVisibleProducts, setIsVisibleProducts] = useState([]);
   const [matchedProducts, setMatchedProducts] = useState([]);
@@ -15,49 +14,35 @@ export default function Items() {
   const [animatePing, setAnimatePing] = useState(false);
   const [showCloseButton, setShowCloseButton] = useState(false);
 
-  const [time,setTime]= useState(10);
-  const [loseGame,setLoseGame] = useState(false);
-  const [startTime,setStartTime] = useState(false)
+  const [time, setTime] = useState(10);
+  const [loseGame, setLoseGame] = useState(false);
+  const [startTime, setStartTime] = useState(false);
 
-
-  useEffect(()=>{
-
-    if(startTime){
-
+  useEffect(() => {
+    if (startTime) {
       const timer = setInterval(() => {
-
-        setTime((prev)=> {
-  
-          if(prev === 0){
-  
-            
+        setTime((prev) => {
+          if (prev === 0) {
             setLoseGame(true);
-            
-  
+
             return prev;
-          } 
+          }
 
           return prev - 1;
-  
         });
-  
       }, 1000);
-  
-      return () => clearInterval(timer)
-    } 
 
-  },[startTime])
+      return () => clearInterval(timer);
+    }
+  }, [startTime]);
 
-
-  useEffect(()=>{
-      if(point === 60) {
-          setStartTime(false);
-      }
-  },[point])
-
+  useEffect(() => {
+    if (point === 60) {
+      setStartTime(false);
+    }
+  }, [point]);
 
   async function startHandler(e) {
-
     e.preventDefault();
 
     const response = await fetch("/item-data.json");
@@ -72,24 +57,17 @@ export default function Items() {
     setLoseGame(false);
     setTime(10);
     setStartTime(true);
-  
   }
-
-  
-
- 
-
 
   useEffect(() => {
     setIsVisibleProducts(products.filter((item) => item.isVisible === true));
+
   }, [products]);
-
-
 
   function handlerShowSelected(id) {
     const selectedProduct = products.find((product) => product.id === id);
 
-    if (!selectedProduct.isVisible) {
+    if (!selectedProduct.isVisible && !loseGame ) {
       selectedProduct.isVisible = true;
 
       setIsVisibleProducts(products.filter((item) => item.isVisible === true));
@@ -146,8 +124,6 @@ export default function Items() {
         ))}
       </div>
 
-          
-
       <div className="flex flex-col justify-between items-center w-[30%] my-20">
         {showCloseButton && (
           <div className="w-3/5 border-2 border-dashed border-[#a62b9460] text-2xl px-6 py-2 text-center text-white rounded-full ">
@@ -163,16 +139,16 @@ export default function Items() {
           </div>
         )}
 
-           <h1 className="text-3xl text-white">{time}</h1>
+        <h1 className="text-3xl text-white">{time}</h1>
 
-        {loseGame && 
-        <div className="flex flex-col justify-center items-center ">
+        {loseGame && (
+          <div className="flex flex-col justify-center items-center ">
             <h2 className="text-3xl py-2 font-mono text-transparent bg-clip-text  bg-gradient-to-r from-red-600 via-red-300 to-red-600 animate-bounce ">
               Time is up!!!
             </h2>
             <AgainButton onStartHandler={startHandler} />
-          </div>}
-
+          </div>
+        )}
 
         {point === 60 && (
           <div className="flex flex-col justify-center items-center ">
@@ -184,14 +160,11 @@ export default function Items() {
         )}
 
         <div className="flex w-full justify-around  ">
-          {showCloseButton ? 
-            (
+          {showCloseButton ? (
             <CloseButton onCloseHandler={closeHandler} />
-            ) 
-            : 
-            (
+          ) : (
             <StartButton onStartHandler={startHandler} />
-            )}
+          )}
         </div>
       </div>
     </>
